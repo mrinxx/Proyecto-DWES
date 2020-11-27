@@ -11,13 +11,15 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    //se le indica que quiero usar la tabla usuarios
+    protected $table="usuarios";
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name',
+        'nombre',
         'email',
         'password',
     ];
@@ -40,4 +42,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /*Un usuario -> muchas imagenes*/
+    public function imagenes(){
+        return $this->hasMany('App\Models\Imagen');
+        }
 }
