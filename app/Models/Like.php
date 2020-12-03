@@ -14,12 +14,12 @@ class Like extends Model
 
     //Muchos likes -> un usuario
     public function usuario(){
-        return $this->belongsTo('App\Models\User', 'id_usuario');
+        return $this->belongsTo('App\Models\User', 'usuario_id');
         }
 
     //Muchos likes -> una imagen
     public function imagen(){
-        return $this->belongsTo('App\Models\Imagen','id_imagen');
+        return $this->belongsTo('App\Models\Imagen','imagen_id');
     }
 }
 

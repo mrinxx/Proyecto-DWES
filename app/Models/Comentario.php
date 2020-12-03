@@ -7,13 +7,14 @@
         use HasFactory;
         //Tabla que voy a estar modificando
         protected $table = 'comentarios';
+        
         //Relaciónde Muchos a Uno
         public function usuario(){
-        return $this->belongsTo('App\Models\User', 'id_usuario');
+        return $this->belongsTo('App\Models\User', 'usuario_id');
         }
         //Relaciónde Muchos a Uno
         public function imagen(){
-        return $this->belongsTo('App\Models\Imagen', 'id_imagen');
+        return $this->belongsTo('App\Models\Imagen', 'imagen_id');
     }
 }
 

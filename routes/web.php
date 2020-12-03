@@ -26,20 +26,19 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::get('/', function () {
-    $images = Imagen::all();
-    foreach($images as $image){
-    echo "<br>".$image->ruta_imagen;
-    echo "<br>".$image->desccripcion;
-    echo "<br>".$image->usuario->nombre." ".$image->usuario->apellido;
+    $imagenes = Imagen::all();
+    foreach($imagenes as $imagen){
+    echo "<br>".$imagen->ruta_imagen;
+    echo "<br>".$imagen->description;
+    echo "<br>".$imagen->usuario->nombre." ".$imagen->usuario->apellido;
     //Si la imagen tiene asociado algun comentario
-if(count($image->comentarios) >= 1){
-    echo '<h4>Comentarios:</h4>';
-    foreach($image->comments as $comment){
-    echo "#>".$comment->user->name.' '.$comment->user->surname.":";
-    echo $comment->content."<br>";
+    if(count($imagen->comentarios) >= 1){
+        echo '<h4>Comentarios:</h4>';
+    foreach($imagen->comentarios as $comentario){
+        echo "#>".$comentario->usuario->nombre.' '.$comentario->usuario->apellido.":";
+        echo $comentario->contenido."<br>";
+        }
     }
-   }
-   echo "<hr>";
-   }
-   //return view('welcome');
-   });
+        echo "<br>@>LIKES: ".count($imagen->likes);
+        echo "<hr>";
+    }});

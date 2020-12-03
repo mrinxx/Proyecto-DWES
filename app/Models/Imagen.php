@@ -22,6 +22,6 @@ class Imagen extends Model
 
     //Una imagen -> un solo usuario
     public function usuario(){
-        return $this->belongsTo('App\Models\User','id_usuario');
+        return $this->belongsTo('App\Models\User','usuario_id');
     }
 }

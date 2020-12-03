@@ -15,11 +15,11 @@ class CreateLikesTable extends Migration
     {
         Schema::create('likes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_usuario')->constrained('usuarios');
-            $table->foreignId('id_imagen')->constrained('imagenes');
+            $table->foreignId('usuario_id')->constrained('usuarios');
+            $table->foreignId('imagen_id')->constrained('imagenes');
             $table->dateTime('fecha_creacion');
             $table->dateTime('fecha_actualizacion');
-            $table->timestamps();
+            //$table->timestamps();
         });
     }
 

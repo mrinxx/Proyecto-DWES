@@ -22,12 +22,12 @@ class CreateUsuariosTable extends Migration
             $table->string('email',255)->unique();
             // $table->timestamp('email_verified_at')->nullable();
             $table->string('password',255);
-            $table->string('imagen',255);
+            $table->string('imagen',255)->nullable();
             $table->dateTime('fecha_creacion');
             $table->dateTime('fecha_actualizacion');
             // $table->rememberToken();
             $table->rememberToken('recordar_token');
-            $table->timestamps();
+            //$table->timestamps();
         });
     }
 

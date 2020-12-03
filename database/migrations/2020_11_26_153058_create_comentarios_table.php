@@ -15,12 +15,12 @@ class CreateComentariosTable extends Migration
     {
         Schema::create('comentarios', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_usuario')->constrained('usuarios');
-            $table->foreignId('id_imagen')->constrained('imagenes');
+            $table->foreignId('usuario_id')->constrained('usuarios');
+            $table->foreignId('imagen_id')->constrained('imagenes');
             $table->text('contenido_comentario');
             $table->dateTime('fecha_creacion');
             $table->dateTime('fecha_actualizacion');
-            $table->timestamps();
+            //$table->timestamps();
         });
     }
 

@@ -15,12 +15,12 @@ class CreateImagenesTable extends Migration
     {
         Schema::create('imagenes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_usuario')->constrained('usuarios');
+            $table->foreignId('usuario_id')->constrained('usuarios');
             $table->string('ruta_imagen',255);
             $table->text('description');
             $table->dateTime('fecha_creacion');
             $table->dateTime('fecha_actualizacion');
-            $table->timestamps();
+            //$table->timestamps();
         });
     }
 
