@@ -18,9 +18,7 @@ class CreateImagenesTable extends Migration
             $table->foreignId('usuario_id')->constrained('usuarios');
             $table->string('ruta_imagen',255);
             $table->text('description');
-            $table->dateTime('fecha_creacion');
-            $table->dateTime('fecha_actualizacion');
-            //$table->timestamps();
+            $table->timestamps();
         });
     }
 

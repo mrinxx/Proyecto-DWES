@@ -17,9 +17,7 @@ class CreateLikesTable extends Migration
             $table->id();
             $table->foreignId('usuario_id')->constrained('usuarios');
             $table->foreignId('imagen_id')->constrained('imagenes');
-            $table->dateTime('fecha_creacion');
-            $table->dateTime('fecha_actualizacion');
-            //$table->timestamps();
+            $table->timestamps();
         });
     }
 

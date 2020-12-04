@@ -25,20 +25,20 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get('/', function () {
-    $imagenes = Imagen::all();
-    foreach($imagenes as $imagen){
-    echo "<br>".$imagen->ruta_imagen;
-    echo "<br>".$imagen->description;
-    echo "<br>".$imagen->usuario->nombre." ".$imagen->usuario->apellido;
-    //Si la imagen tiene asociado algun comentario
-    if(count($imagen->comentarios) >= 1){
-        echo '<h4>Comentarios:</h4>';
-    foreach($imagen->comentarios as $comentario){
-        echo "#>".$comentario->usuario->nombre.' '.$comentario->usuario->apellido.":";
-        echo $comentario->contenido."<br>";
-        }
-    }
-        echo "<br>@>LIKES: ".count($imagen->likes);
-        echo "<hr>";
-    }});
+// Route::get('/', function () {
+//     $imagenes = Imagen::all();
+//     foreach($imagenes as $imagen){
+//     echo "<br>".$imagen->ruta_imagen;
+//     echo "<br>".$imagen->description;
+//     echo "<br>".$imagen->usuario->nombre." ".$imagen->usuario->apellido;
+//     //Si la imagen tiene asociado algun comentario
+//     if(count($imagen->comentarios) >= 1){
+//         echo '<h4>Comentarios:</h4>';
+//     foreach($imagen->comentarios as $comentario){
+//         echo "#>".$comentario->usuario->nombre.' '.$comentario->usuario->apellido.":";
+//         echo $comentario->contenido."<br>";
+//         }
+//     }
+//         echo "<br>@>LIKES: ".count($imagen->likes);
+//         echo "<hr>";
+//     }});

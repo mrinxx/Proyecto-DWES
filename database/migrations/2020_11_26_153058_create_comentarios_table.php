@@ -18,9 +18,7 @@ class CreateComentariosTable extends Migration
             $table->foreignId('usuario_id')->constrained('usuarios');
             $table->foreignId('imagen_id')->constrained('imagenes');
             $table->text('contenido_comentario');
-            $table->dateTime('fecha_creacion');
-            $table->dateTime('fecha_actualizacion');
-            //$table->timestamps();
+            $table->timestamps();
         });
     }
 
