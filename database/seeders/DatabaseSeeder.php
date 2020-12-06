@@ -14,7 +14,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-        User::factory(13)->create();
+        //En estas líneas especifico que factory quiero utilizar y cuantos datos
+        //de cada tipo quiero introducir en la BD
+        \App\Models\User::factory(10)->create();
+        \App\Models\Imagen::factory(20)->create();
+        \App\Models\Comentario::factory(30)->create();
+        \App\Models\Like::factory(60)->create();
     }
 }
