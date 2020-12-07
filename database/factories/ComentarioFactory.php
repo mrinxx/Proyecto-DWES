@@ -25,7 +25,7 @@ class ComentarioFactory extends Factory
             //
             'usuario_id' => \App\Models\User::all()->random()->id,
             'imagen_id' => \App\Models\Imagen::all()->random()->id,
-            'contenido_comentario' => $this->faker->realText(50),
+            'contenido_comentario' => $this->faker->Text(50),
         ];
     }
 }
