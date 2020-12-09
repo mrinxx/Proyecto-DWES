@@ -25,7 +25,7 @@ class ImagenFactory extends Factory
             //
             
             'usuario_id' => \App\Models\User::all()->random()->id,
-            'ruta_imagen'=> $this->faker->imageUrl,
+            'ruta_imagen'=> $this->faker->imageUrl(),
             'description' => $this->faker->text(),
 
         ];

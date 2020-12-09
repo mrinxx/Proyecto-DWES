@@ -21,7 +21,7 @@ class UserFactory extends Factory
      *
      * @return array
      */
-    public function definition()
+    public function definition() 
     {
         return [
             'rol'=> $this->faker->randomElement(['admin','user','manager']),
@@ -30,7 +30,7 @@ class UserFactory extends Factory
             'nombre_usuario'=>$this->faker->userName,
             'email' => $this->faker->unique()->safeEmail,
             'password' =>  Hash::make('1234'), // password
-            'imagen'=>$this->faker->word.".jpg",
+            'imagen'=>$this->faker->imageUrl(50,50),
             'email_verified_at' => now(),
             'created_at'=>$this->faker->dateTime(),
             'updated_at'=>$this->faker->dateTime(),
