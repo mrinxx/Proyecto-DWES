@@ -10,6 +10,15 @@
                 <div class="card-body">
                 <?php echo "<br><img src=".$imagen->ruta_imagen.">"; ?>;
                         <hr>
+                        @can('isAdmin')
+                            @include('usuarios.usuario')
+                            @include('usuarios.admin')
+                        @elsecan('isManager')
+                            @include('usuarios.manager')
+                        @else
+                            @include('usuarios.usuario')
+                    @endcan
+                    <br>
                         <b>Descripcion:</b><?php echo $imagen->description."<br>" ;?>
                         <b>Comentarios:</b> @foreach($imagen->comentarios as $comentario)
                         <?php echo "<br><b>".$comentario->usuario->nombre_usuario.":</b>";
@@ -17,34 +26,11 @@
                         @endforeach
                         <?php echo "<br>" ;?>
                         <b>Likes:</b>{{count($imagen->likes)}}
-                        @can('isAdmin')
-                        @include('user.admin')
-                
-                    @elsecan('isManager')
-                        @include('user.manager')
-                    @else
-                        @include('usuarios.usuario')
-                    @endcan
-
                 </div>
             </div>
         </div>
-     
 
-        <!-- <div class="container">
-        @can('isAdmin')
-                @include('user.admin')
-               
-                    @elsecan('isManager')
-                        @include('user.manager')
-                    @else
-
-                        @include('usuarios.usuario')
-                    @endcan
-
-
-    </div> -->
+    </div> 
     </div>
-</div>
 @endforeach
 @endsection

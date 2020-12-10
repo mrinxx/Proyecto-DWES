@@ -24,4 +24,4 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('interestingpath',App\Http\Controllers\InterestingpathController::class);
+Route::resource('imagen',App\Http\Controllers\ImagenController::class);

@@ -15,7 +15,7 @@ class CreateImagenesTable extends Migration
     {
         Schema::create('imagenes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('usuario_id')->constrained('usuarios')->onDelete('cascade');
+            $table->foreignId('usuario_id')->index()->constrained()->onDelete('cascade');
             $table->string('ruta_imagen',255);
             $table->text('description');
             $table->timestamps();
