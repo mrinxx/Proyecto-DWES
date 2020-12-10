@@ -1,6 +1,5 @@
-<!-- @can('isAdmin') -->
 @extends('layouts.app')
-<!-- @endcan; -->
+
 @section('content')
 
 <!-- @if (session('status'))
@@ -36,12 +35,14 @@
                     @endcan
                     <br>
                         <b>Descripcion:</b><?php echo $imagen->description."<br>" ;?>
-                        <b>Comentarios:</b> @foreach($imagen->comentarios as $comentario)
+                        <b>Comentarios:</b><a href="{{route('comentarios.create',['imagen'=>$imagen, 'usuario'=>Auth::id()])}}" class="btn btn-dark" role="button" aria-pressed="true">Añadir comentario</a>
+                         @foreach($imagen->comentarios as $comentario)
                         <?php echo "<br><b>".$comentario->usuario->nombre_usuario.":</b>";
                             echo $comentario->contenido_comentario ;?>
                         @endforeach
-                        <?php echo "<br>" ;?>
-                        <b>Likes:</b>{{count($imagen->likes)}}
+                        </br>
+                        
+                        <br><b>Likes:</b>{{count($imagen->likes)}}
                 </div>
             </div>
         </div>

@@ -8,14 +8,12 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-
-  <title>Hello, world!</title>
 </head>
 
 <body>
   <!-- menú navegación -->
   <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="{{action('App\Http\Controllers\ImagenController@index')}}">Inicio</ a>
+    <a class="navbar-brand" href="{{route('home')}}">Inicio</ a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" datatarget="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" arialabel="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
