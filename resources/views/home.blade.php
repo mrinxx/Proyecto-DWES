@@ -2,12 +2,6 @@
 
 @section('content')
 
-<!-- @if (session('status'))
-        <div class="alert alert-success" role="alert">
-            {{ session('status') }}
-        </div>
-@endif -->
-
 @if(Session::has('success'))
     <div class="alert alert-success" role="alert"><p> <strong> {{ Session::get('success') }} </strong> </p></div>
 @endif
@@ -34,8 +28,14 @@
                             @include('usuarios.usuario')
                     @endcan
                     <br>
-                        <b>Descripcion:</b><?php echo $imagen->description."<br>" ;?>
-                        <b>Comentarios:</b><a href="{{route('comentarios.create',['imagen'=>$imagen, 'usuario'=>Auth::id()])}}" class="btn btn-dark" role="button" aria-pressed="true">Añadir comentario</a>
+                        <p><b>Descripcion:</b></p><?php echo $imagen->description."<br>" ?>
+                        <b>Comentarios:</b>
+                        <form action="{{route('comentarios.store',['imagen'=>$imagen, 'usuario'=>Auth::user()->id])}}" method="POST">
+                                @csrf 
+                                @method('POST')
+                                <input type="textarea" name="contenido" placeholder="Inserta tu comentario aquí...">
+                                <button class="btn btn-info">Comentar</button>
+                            </form>
                          @foreach($imagen->comentarios as $comentario)
                         <?php echo "<br><b>".$comentario->usuario->nombre_usuario.":</b>";
                             echo $comentario->contenido_comentario ;?>

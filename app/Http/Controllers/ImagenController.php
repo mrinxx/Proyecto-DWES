@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Imagen;
+use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 class ImagenController extends Controller
 {
@@ -23,9 +24,10 @@ class ImagenController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(User $usuario)
     {
-        //
+        return view('includes.imagen.subir',compact('usuario'));
+      
     }
 
     /**
@@ -34,27 +36,31 @@ class ImagenController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, User $usuario)
     {
-    //     $input = $request->all();
 
+            $validator = Validator::make($request->all(), [
+                'usuario'=> 'required',
+                'ruta_imagen' => 'required|url',
+                'description' => 'required'
+                
+            ]);
     
-    //    //$request->validate(['ruta_imagen' => 'required','description' => 'required',]);
-
-    //     $validator_url = Validator::make($request->all(), [
-    //         'ruta_imagen' => 'max:255|url'
-    //     ]);
-
-    //     if ($validator_url->fails()) {
-    //         return redirect('/')->withErrors($validator_url)->with('error', 'El enlace de la imagen no es válido');
-    //     }
-    //     $validator_des = Validator::make($request->all(), [
-    //         'description' => 'required'
-    //     ]);
-
-    //     if ($validator_des->fails()) {
-    //         return redirect('/')->withErrors($validator_des)->with('error', 'Introduce una descripción válida');
-    //     }
+    
+            if ($validator->fails()) {
+                return redirect('/')->withErrors($validator)->with('error', 'No se ha podido subir la imagen');
+                
+            }
+    
+    
+            $imagen = new Imagen;
+            $imagen->usuario_id = $request->usuario;
+            $imagen->ruta_imagen = $request->ruta_imagen;
+            $imagen->description= $request->description;
+    
+            //  return $imagen->save();
+    
+             return redirect()->route('home')->with('success', 'Se ha subido la foto');
 
 
     //     Imagen::create($request->all());

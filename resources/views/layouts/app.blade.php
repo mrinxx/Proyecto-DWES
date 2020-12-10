@@ -33,7 +33,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                   
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -52,9 +52,16 @@
                                 </li>
                             @endif
                         @else
+                        <li class="nav-item">
+                                <form action="{{route('imagenes.subir',$usuario=Auth::id())}}" class="form-inline my-2 my-lg0" method="POST">
+                                    @csrf 
+                                    @method('POST')
+                                    <button class="btn btn-outline-info" type="submit">Subir una imagen</button>
+                                </form>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->nombre_usuario }}
+                                <img src="{{Auth::user()->imagen}}">   {{ Auth::user()->nombre_usuario }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -68,6 +75,7 @@
                                         @csrf
                                     </form>
                                 </div>
+                                
                             </li>
                         @endguest
                     </ul>

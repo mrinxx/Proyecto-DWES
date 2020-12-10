@@ -28,8 +28,6 @@ class ComentarioController extends Controller
      */
     public function create(Imagen $imagen, User $usuario)
     {
-        //
-        return view('includes.comentario.create',compact('imagen','usuario'));
     }
 
     /**
@@ -71,7 +69,7 @@ class ComentarioController extends Controller
      */
     public function show(Comentario $comentario)
     {
-    //     $autor=$comentario->user->nombre;
+    //    
     
 
     }
