@@ -9,10 +9,5 @@
 
 
 
-<a href="">
-    <i class="fas fa-edit  fa-lg">Editar</i>
-</a>
-
-
 
 

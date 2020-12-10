@@ -25,3 +25,8 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('imagen',App\Http\Controllers\ImagenController::class);
+Route::resource('like',App\Http\Controllers\LikeController::class);
+
+Route::post('imagen/{imagen}/edit', [App\Http\Controllers\ImagenController::class, 'edit'])->name('imagenes.editar');
+
+Route::put('imagen/{imagen}', [App\Http\Controllers\ImagenController::class, 'update',])->name('imagenes.update');

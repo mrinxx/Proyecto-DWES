@@ -1,6 +1,22 @@
+<!-- @can('isAdmin') -->
 @extends('layouts.app')
-
+<!-- @endcan; -->
 @section('content')
+
+<!-- @if (session('status'))
+        <div class="alert alert-success" role="alert">
+            {{ session('status') }}
+        </div>
+@endif -->
+
+@if(Session::has('success'))
+    <div class="alert alert-success" role="alert"><p> <strong> {{ Session::get('success') }} </strong> </p></div>
+@endif
+@if(Session::has('error'))
+    <div class="alert alert-danger" role="alert"><p> <strong> {{ Session::get('error') }} </strong> </p></div>
+@endif
+
+
 @foreach($imagenes as $imagen)
 <div class="container">
     <div class="row justify-content-center">

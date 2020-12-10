@@ -9,6 +9,7 @@ class Imagen extends Model
 {
     use HasFactory;
     protected $table = 'imagenes';
+   protected $fillable=['ruta_imagen','description'];
 
     //Una imagen -> muchos comentarios
     public function comentarios(){

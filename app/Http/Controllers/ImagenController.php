@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Imagen;
+use Illuminate\Support\Facades\Validator;
 class ImagenController extends Controller
 {
     //
@@ -35,29 +36,29 @@ class ImagenController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
+    //     $input = $request->all();
 
     
-     //   $request->validate(['path' => 'required','description' => 'required',]);
+    //    //$request->validate(['ruta_imagen' => 'required','description' => 'required',]);
 
-        // $validator_url = Validator::make($request->all(), [
-        //     'path' => 'required|max:255|url'
-        // ]);
+    //     $validator_url = Validator::make($request->all(), [
+    //         'ruta_imagen' => 'max:255|url'
+    //     ]);
 
-        // if ($validator_url->fails()) {
-        //     return redirect('home')->withErrors($validator_url)->with('error', 'Tiene que ser una una url.');
-        // }
-        // $validator_des = Validator::make($request->all(), [
-        //     'description' => 'required'
-        // ]);
+    //     if ($validator_url->fails()) {
+    //         return redirect('/')->withErrors($validator_url)->with('error', 'El enlace de la imagen no es válido');
+    //     }
+    //     $validator_des = Validator::make($request->all(), [
+    //         'description' => 'required'
+    //     ]);
 
-        // if ($validator_des->fails()) {
-        //     return redirect('home')->withErrors($validator_des)->with('error', 'Tiene que tener una descripción no vacia');
-        // }
+    //     if ($validator_des->fails()) {
+    //         return redirect('/')->withErrors($validator_des)->with('error', 'Introduce una descripción válida');
+    //     }
 
 
-        // Imagen::create($request->all());
-        // return redirect()->route('home')->with('success', 'Enlace creado correctamente.');
+    //     Imagen::create($request->all());
+    //     return redirect()->route('home')->with('success', 'Enlace creado correctamente.');
     }              
     /**
      * Display the specified resource.
@@ -67,8 +68,8 @@ class ImagenController extends Controller
      */
     public function show(Imagen $imagen)
     {
-        $autor=$imagen->user->name;
-     return view('includes.Imagen.view',compact('Imagen','autor'));
+    //     $autor=$imagen->user->nombre;
+    //  return view('includes.Imagen.view',compact('Imagen','autor'));
 
     }
 
@@ -81,7 +82,7 @@ class ImagenController extends Controller
     public function edit(Imagen $imagen)
     {
         //
-        return view('includes.Imagen.editar');
+        return view('includes.imagen.editar',compact('imagen'));
     }
 
     /**
@@ -93,9 +94,21 @@ class ImagenController extends Controller
      */
     public function update(Request $request, Imagen $imagen)
     {
-        //
-    }
 
+
+        $validator_des = Validator::make($request->all(), [
+            'description' => 'required'
+        ]);
+
+        if ($validator_des->fails()) {
+            return redirect('/')->withErrors($validator_des)->with('error', 'Tiene que tener una descripción no vacia');
+        }
+
+        $imagen->description = $request->description;
+        $imagen->save();
+        return redirect()->route('home')->with('success', 'Se ha actualizado la imagen correctamente');
+    }
+    
     /**
      * Remove the specified resource from storage.
      *
@@ -114,3 +127,4 @@ class ImagenController extends Controller
      
 }
 }
+?>
