@@ -27,7 +27,6 @@ class ImagenController extends Controller
     public function create(User $usuario)
     {
         return view('includes.imagen.subir',compact('usuario'));
-      
     }
 
     /**
@@ -38,7 +37,6 @@ class ImagenController extends Controller
      */
     public function store(Request $request, User $usuario)
     {
-
             $validator = Validator::make($request->all(), [
                 'usuario'=> 'required',
                 'ruta_imagen' => 'required|url',
@@ -46,25 +44,19 @@ class ImagenController extends Controller
                 
             ]);
     
-    
             if ($validator->fails()) {
                 return redirect('/')->withErrors($validator)->with('error', 'No se ha podido subir la imagen');
                 
             }
     
-    
-            $imagen = new Imagen;
+            $imagen = new Imagen();
             $imagen->usuario_id = $request->usuario;
             $imagen->ruta_imagen = $request->ruta_imagen;
             $imagen->description= $request->description;
-    
-            //  return $imagen->save();
-    
+
+            $imagen->save();
              return redirect()->route('home')->with('success', 'Se ha subido la foto');
 
-
-    //     Imagen::create($request->all());
-    //     return redirect()->route('home')->with('success', 'Enlace creado correctamente.');
     }              
     /**
      * Display the specified resource.
@@ -74,9 +66,7 @@ class ImagenController extends Controller
      */
     public function show(Imagen $imagen)
     {
-    //     $autor=$imagen->user->nombre;
-    //  return view('includes.Imagen.view',compact('Imagen','autor'));
-
+        //
     }
 
     /**

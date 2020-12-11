@@ -1,4 +1,6 @@
-@extends('layouts.base')
+@extends('layouts.app')
+
+@section('content')
 <br>
 <br>
 <br>
@@ -26,7 +28,7 @@
                     <label for="description">Introduce la nueva descripción de la imagen:</label>
                 </td>
                 <td>
-                    <textarea id="description" name="description" cols="100" rows="10">{{$imagen->description}}</textarea>
+                    <textarea id="description" class="form-control" name="description" cols="100" rows="10">{{$imagen->description}}</textarea>
                 </td>
             <td>
                 <button type="submit" value="Submit" >Actualizar</button>
@@ -34,3 +36,4 @@
             </tr>
     </form>
 </div>
+@endsection

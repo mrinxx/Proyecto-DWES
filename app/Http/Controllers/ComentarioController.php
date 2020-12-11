@@ -45,11 +45,9 @@ class ComentarioController extends Controller
             'contenido'=> 'required'
         ]);
 
-
         if ($validator->fails()) {
             return redirect('/')->withErrors($validator)->with('error', 'El comentario no ha podido ser enviado');
         }
-
 
         $comentario = new Comentario();
 
@@ -70,8 +68,6 @@ class ComentarioController extends Controller
     public function show(Comentario $comentario)
     {
     //    
-    
-
     }
 
     /**
@@ -82,7 +78,6 @@ class ComentarioController extends Controller
      */
     public function edit(Comentario $comentario)
     {
-        //
       //
     }
 
@@ -95,8 +90,7 @@ class ComentarioController extends Controller
      */
     public function update(Request $request, Comentario $comentario)
     {
-
-//
+        //
     }
     
     /**
@@ -107,10 +101,8 @@ class ComentarioController extends Controller
      */
     public function destroy(Comentario $comentario)
     {
-        //
-
-     
-}
+        //     
+    }
 }
 ?>
 

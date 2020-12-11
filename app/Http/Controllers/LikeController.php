@@ -45,9 +45,7 @@ class LikeController extends Controller
      */
     public function show(Like $like)
     {
-        $autor=$like->user->name;
-     return view('includes.Like.view',compact('Like','autor'));
-
+        
     }
 
     /**
@@ -59,7 +57,7 @@ class LikeController extends Controller
     public function edit(Like $like)
     {
         //
-        return view('includes.Like.editar');
+        
     }
 
     /**
@@ -72,20 +70,6 @@ class LikeController extends Controller
     public function update(Request $request, Like $like)
     {
         //
-        $imagen=($request->imagen_id);
-        $usuario=($request->usuario_id);
-        $likes=Like::where('imagen_id',$imagen)->where('usuario_id',$usuario)->get();
-
-        if(count($likes)>0){
-            foreach($likes as $like){
-                $like->delete();
-                return redirect()->route('home')->with('error','Eliminado Like');
-            }
-        }else{
-            $input = $request->all();
-            Like::create($input);
-            return redirect()->route('home')->with('success','Liked!!');
-        }
     }
 
     /**

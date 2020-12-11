@@ -16,7 +16,7 @@ class ColumnaRolUsuariosTable extends Migration
         //Del esquema coge la tabla usuarios y en el campo rol le doy un dato entre
         //user, manager o admin. Por defecto será user
         Schema::table('usuarios', function (Blueprint $table) {
-            $table->enum('rol', ['user', 'manager', 'admin'])->default('user');
+            $table->enum('rol', ['user','admin'])->default('user');
             });
     }
 
